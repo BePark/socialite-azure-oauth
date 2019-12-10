@@ -22,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Bepark\\SocialiteAzureOAuth\\AppServiceProvider.php"
+                "Bepark\\SocialiteAzureOAuth\\AppServiceProvider"
             ]
         }
     }
