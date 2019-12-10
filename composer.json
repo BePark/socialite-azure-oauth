@@ -13,6 +13,11 @@
             "email": "jeremy@dillenbourg.be"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Bepark\\SocialiteAzureOAuth\\": "src/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
