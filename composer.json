@@ -2,6 +2,7 @@
     "name": "be-park/socialite-azure-oauth",
     "description": "Allow multi connection to azure AD using socialite of Laravel",
     "type": "library",
+    "license": "MIT",
     "require": {
         "laravel/socialite": "^4.3",
         "laravel/framework": ">5.5",
