@@ -42,9 +42,10 @@ trait AzureOAuthControllerTrait
 		{
 			$this->_driver = $driverName;
 		}
-
-		throw new \Exception('Driver ' . $driverName . ' is not configured in your config file.');
-
+		else
+		{
+			throw new \Exception('Driver ' . $driverName . ' is not configured in your config file.');
+		}
 	}
 
 	protected function getDriver(): string
