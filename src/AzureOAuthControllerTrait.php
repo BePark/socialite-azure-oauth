@@ -35,4 +35,20 @@ trait AzureOAuthControllerTrait
     protected function handleOAuthUser(User $user) {
     	throw new \Exception('Method ' . __METHOD__ . ' is not implemented');
     }
+
+    protected function setDriver(string $driverName)
+	{
+		if(is_array(config('socialite-azure-oauth.' . $driverName)))
+		{
+			$this->_driver = $driverName;
+		}
+
+		throw new \Exception('Driver ' . $driverName . ' is not configured in your config file.');
+
+	}
+
+	protected function getDriver(): string
+	{
+		return $this->_driver;
+	}
 }
