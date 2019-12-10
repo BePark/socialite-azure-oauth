@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
             __DIR__.'/src/config/socialite-azure-oauth.php' => config_path('socialite-azure-oauth.php'),
         ]);
 
-	    foreach(config('socialite-azure-oauth.php') as $name => $instance)
+	    foreach(config('socialite-azure-oauth', []) as $name => $instance)
 	    {
 	    	app(\Laravel\Socialite\Contracts\Factory::class)->extend($name, function($app) use ($name, $instance)
 		    {
