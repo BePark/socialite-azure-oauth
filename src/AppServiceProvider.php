@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/src/config/socialite-azure-oauth.php' => config_path('socialite-azure-oauth.php'),
+            __DIR__.'/config/socialite-azure-oauth.php' => config_path('socialite-azure-oauth.php'),
         ]);
 
 	    foreach(config('socialite-azure-oauth', []) as $name => $instance)
