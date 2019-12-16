@@ -2,6 +2,7 @@
 
 namespace Bepark\SocialiteAzureOAuth;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -36,12 +37,12 @@ class AppServiceProvider extends ServiceProvider
 			    );
 		    });
 
-		    app('router')->group(['middleware' => $instance['routes']['middleware']], function($router)  use ($name, $instance)
+		    app('router')->group(['middleware' => $instance['routes']['middleware']], function(Router $router)  use ($name, $instance)
 		    {
 		    	throw_if(is_null($instance['auth_controller']), new \Exception('Controller config need to be set for azure driver ' . $name));
 
-			    $router->get($instance['routes']['login'], $instance['auth_controller'] . '@redirectToOauthProvider');
-			    $router->get($instance['routes']['callback'], $instance['auth_controller'] . '@handleOauthResponse');
+			    $router->get($instance['routes']['login'], $instance['auth_controller'] . '@redirectToOauthProvider')->name('sso.' . $name . '.get_login');
+			    $router->get($instance['routes']['callback'], $instance['auth_controller'] . '@handleOauthResponse')->name('sso.' . $name . '.get_callback');
 		    });
 	    }
     }

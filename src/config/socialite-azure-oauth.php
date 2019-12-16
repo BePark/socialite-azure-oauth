@@ -9,11 +9,11 @@ return [
 
 			// The url that will redirect to the SSO URL.
 			// There should be no reason to override this.
-			'login' => 'login/microsoft',
+			'login' => 'login/microsoft',// route name = sso.azure-oauth-login.get_login, azure-oauth-login is the name of the driver (key of this array)
 
 			// The app route that SSO will redirect to.
 			// There should be no reason to override this.
-			'callback' => 'login/microsoft/callback',
+			'callback' => 'login/microsoft/callback',// route name =sso.azure-oauth-login.get_callback
 		],
 		'credentials' => [
 			'client_id' => env('AZURE_AD_CLIENT_ID', ''),
