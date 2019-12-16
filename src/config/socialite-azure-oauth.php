@@ -2,6 +2,7 @@
 
 return [
 	'azure-oauth-login' => [
+		'auto-load' => true,//define if this need to ne loaded on app boot. If false, you'll have to load it by yourself.
 		'routes' => [
 			// The middleware to wrap the auth routes in.
 			// Must contain session handling otherwise login will fail.
