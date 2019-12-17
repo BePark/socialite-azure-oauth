@@ -36,6 +36,10 @@ trait AzureOAuthControllerTrait
     	throw new \Exception('Method ' . __METHOD__ . ' is not implemented');
     }
 
+	/**
+	 * @param string $driverName
+	 * @throws \Exception
+	 */
     protected function setDriver(string $driverName)
 	{
 		if(is_array(config('socialite-azure-oauth.' . $driverName)))
@@ -48,6 +52,9 @@ trait AzureOAuthControllerTrait
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getDriver(): string
 	{
 		return $this->_driver;

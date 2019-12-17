@@ -29,10 +29,7 @@ class AppServiceProvider extends ServiceProvider
 
 	    foreach(config('socialite-azure-oauth', []) as $name => $instance)
 	    {
-	    	if($instance['auto-load'])
-		    {
-			    app(\Laravel\Socialite\Contracts\Factory::class)->extend($name, function($app) use ($name, $instance)
-			    {
+			    app(\Laravel\Socialite\Contracts\Factory::class)->extend($name, function ($app) use ($name, $instance) {
 				    return app(\Laravel\Socialite\Contracts\Factory::class)->buildProvider(
 					    $instance['provider'],
 					    $instance['credentials']
@@ -47,7 +44,5 @@ class AppServiceProvider extends ServiceProvider
 				    $router->get($instance['routes']['callback'], $instance['auth_controller'] . '@handleOauthResponse')->name('sso.' . $name . '.get_callback');
 			    });
 		    }
-
-	    }
     }
 }
