@@ -47,7 +47,7 @@ class AzureOauthProvider extends AbstractProvider implements ProviderInterface
     public function user()
     {
         if ($this->hasInvalidState()) {
-            throw new InvalidStateException;
+            throw new InvalidStateException('Invalid state');
         }
 
         try
@@ -56,7 +56,9 @@ class AzureOauthProvider extends AbstractProvider implements ProviderInterface
         }
         catch (ClientException $clientException)
         {
-	        throw new InvalidStateException(json_encode($clientException->getResponse()->getBody()->getContents()));
+        	$content = $clientException->getResponse()->getBody()->getContents();
+
+	        throw new InvalidStateException($content);
         }
 
         $user = $this->mapUserToObject($this->getUserByToken(
