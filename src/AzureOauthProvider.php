@@ -2,6 +2,7 @@
 
 namespace Bepark\SocialiteAzureOAuth;
 
+use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Arr;
 use Laravel\Socialite\Two\User;
 use Laravel\Socialite\Two\AbstractProvider;
@@ -49,7 +50,14 @@ class AzureOauthProvider extends AbstractProvider implements ProviderInterface
             throw new InvalidStateException;
         }
 
-        $response = $this->getAccessTokenResponse($this->getCode());
+        try
+        {
+	        $response = $this->getAccessTokenResponse($this->getCode());
+        }
+        catch (ClientException $clientException)
+        {
+	        throw new InvalidStateException(json_encode($clientException->getResponse()->getBody()->getContents()));
+        }
 
         $user = $this->mapUserToObject($this->getUserByToken(
             $token = Arr::get($response, 'access_token')
