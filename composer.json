@@ -4,7 +4,7 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "laravel/socialite": "^4.3",
+        "laravel/socialite": "^5.0",
         "laravel/framework": ">5.5",
         "guzzlehttp/guzzle": ">6.3"
     },
